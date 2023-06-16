@@ -1,0 +1,40 @@
+<style>
+  .form-submission-email {
+    font-size: 14px;
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .form-submission-email td {
+    padding: 0.5rem;
+  }
+
+  .form-submission-email .section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    margin-top: 1rem;
+  }
+
+  .form-submission-email .label {
+    font-weight: bold;
+  }
+</style>
+<div class="form-submission-email" style="font-size: 14px; text-align: left; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <p>You have a new {{title}} submission</p>
+  <table>
+    {{#each sections}}
+    <tr>
+      <td colspan="2" class="section-title" style="padding: 0.5rem; font-size: 1.2rem; font-weight: bold; margin-top: 1rem;">
+        {{this.label}}
+      </td>
+    </tr>
+    {{#each this.fields}}
+    <tr>
+      <td class="label" style="padding: 0.5rem; font-weight: bold;">{{this.label}}</td>
+      <td style="padding: 0.5rem;">{{this.value}}</td>
+    </tr>
+    {{/each}}
+    {{/each}}
+  </table>
+</div>

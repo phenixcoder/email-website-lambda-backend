@@ -1,0 +1,13 @@
+{
+  "watch": ["build", "dev-server.js"],
+  "ext": "js",
+  "exec": "node ./dev-server.js",
+  "env": {
+    "NODE_ENV": "developments",
+    "ALLOWED_ORIGINS": "http://localhost:8000,https://beta.pearlwellness.com.au,https://pearlwellness.com.au",
+    "BRAND_NAME": "Pearl Wellness Clinic",
+    "LOGO_URL": "https://beta.pearlwellness.com.au/static/logo-71fe64ca8e9d817d41c300a4b1aa5a1c.png",
+    "DELIVERY_EMAILS": "balwant.matharu@gmail.com",
+    "FROM_EMAIL": "form-submissions@autogenerate.pearlwellness.com.au"
+  }
+}

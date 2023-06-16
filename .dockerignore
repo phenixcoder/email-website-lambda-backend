@@ -1,0 +1,16 @@
+Dockerfile
+docker-compose.yml
+*.ts
+**/*.ts
+**/*.test.js
+.husky
+.gitignore
+dev-server.js
+jest.config.js
+service-collection.postman_collection.json
+tsconfig.json
+tslint.json
+logs
+coverage
+node_modules
+publish.sh

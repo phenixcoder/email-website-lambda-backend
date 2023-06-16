@@ -1,0 +1,6 @@
+{
+  "name": "email-website-lambda-backend",
+  "type": "service",
+  "registry": "public.ecr.aws/phenixcoder",
+  "repo": "email-website-lambda-backend"
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form submitted</title>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700;900&family=Quicksand:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  <style>
+    body {
+      text-align: center;
+      padding: 24px;
+      font-size: 14px;
+      font-family: 'Quicksand', sans-serif;
+
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 2rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 1.25rem;
+    }
+
+    img {
+      max-height: 10rem;
+    }
+
+    pre {
+      text-align: left;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  {{#if logoURL}}
+  <img src="{{logoURL}}" />
+  {{/if}}
+  <h2>{{brandName}}</h2>
+  <h1>Thank you</h1>
+  <h3>Your form has been submitted.</h3>
+  <p>Click <a href="{{returnURL}}">here</a> to go back.</p>
+  {{#if debugMessage}}
+  <pre>
+  <strong>Debug Message</strong>
+    {{debugMessage}}
+  </pre>
+  {{/if}}
+  {{#if emailMessage}}
+  <h3>Email Message</h3>
+  <hr />
+  {{{emailMessage}}}
+  {{/if}}
+</body>
+</html>
