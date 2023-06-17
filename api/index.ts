@@ -6,6 +6,7 @@ import {
 } from 'aws-lambda';
 import { getTemplate } from './lib/template';
 import { sendMail } from './lib/send-mail';
+import { parse } from 'querystring';
 
 interface FieldLabels {
   label: string,
@@ -49,9 +50,13 @@ export const handler = async (
   }
   
   console.log("event.body");
-  console.log(event.body);
   // Prepare data
-  const data = JSON.parse(event.body || '');
+  // Buffer.from(encodeURIComponent(JSON.stringify(request.body))).toString('base64')
+  let body = Buffer.from(event.body || '', 'base64').toString('ascii');// decodeURIComponent(Buffer.from(event.body || '', 'base64').toString('utf-8'));
+
+  const data = parse(decodeURIComponent(body)) as unknown as { [key: string]: string };
+  console.log(data);
+  
   const fieldLabels = JSON.parse(decodeURI(data.fieldLabels)) as FieldLabels[];
 
   // Process data
@@ -75,8 +80,8 @@ export const handler = async (
     sections.push(sec)
   })
   
-  const template = getTemplate('./api/templates/success.hbs')
-  const emailBodyTemplate = getTemplate('./api/templates/email.hbs')
+  const template = getTemplate('./templates/success.hbs')
+  const emailBodyTemplate = getTemplate('./templates/email.hbs')
 
   if (DELIVERY_EMAILS && FROM_EMAIL) {
     const subjectLine =  `${data['config.form-title'] || FORM_TITLE || 'form'} submission ${data['config.subject-part']} `;

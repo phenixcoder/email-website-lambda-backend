@@ -48,10 +48,10 @@ jobs:
           role-to-assume: arn:aws:iam::045615149555:role/phenixcoder-service-image-upload
       - name: Publish 🚀 
         run: |
-          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin $REPO_REGISTRY
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $REPO_REGISTRY
           npm ci
           npm run release
         env: 
           REPO_NAME: "email-website-lambda-backend"
-          REPO_URI: "public.ecr.aws/phenixcoder/email-website-lambda-backend"
-          REPO_REGISTRY: "public.ecr.aws/phenixcoder"
+          REPO_URI: "045615149555.dkr.ecr.ap-southeast-2.amazonaws.com/email-website-lambda-backend"
+          REPO_REGISTRY: "045615149555.dkr.ecr.ap-southeast-2.amazonaws.com"

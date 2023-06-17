@@ -2,9 +2,10 @@
 
 rm -rf ./build
 npm run build
+cp ./package.json ./build
 cp ./package-lock.json ./build
 cd ./build
-mv api app
+# mv api app
 ../scripts/gen-prod-package-json package.json package.json
 find . -wholename '*.d.ts' -delete
 find . -wholename '*.test.js' -delete
