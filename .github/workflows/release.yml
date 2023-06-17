@@ -48,7 +48,7 @@ jobs:
           role-to-assume: arn:aws:iam::045615149555:role/phenixcoder-service-image-upload
       - name: Publish 🚀 
         run: |
-          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $REPO_REGISTRY
+          aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin $REPO_REGISTRY
           npm ci
           npm run release
         env: 
