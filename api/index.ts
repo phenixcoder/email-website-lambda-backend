@@ -49,13 +49,10 @@ export const handler = async (
     }
   }
   
-  console.log("event.body");
   // Prepare data
-  // Buffer.from(encodeURIComponent(JSON.stringify(request.body))).toString('base64')
-  let body = Buffer.from(event.body || '', 'base64').toString('ascii');// decodeURIComponent(Buffer.from(event.body || '', 'base64').toString('utf-8'));
+  let body = Buffer.from(event.body || '', 'base64').toString('ascii');
 
   const data = parse(decodeURIComponent(body)) as unknown as { [key: string]: string };
-  console.log(data);
   
   const fieldLabels = JSON.parse(decodeURI(data.fieldLabels)) as FieldLabels[];
 
@@ -83,7 +80,7 @@ export const handler = async (
   const template = getTemplate('./templates/success.hbs')
   const emailBodyTemplate = getTemplate('./templates/email.hbs')
 
-  if (DELIVERY_EMAILS && FROM_EMAIL) {
+  if (NODE_ENV !== 'development' && DELIVERY_EMAILS && FROM_EMAIL) {
     const subjectLine =  `${data['config.form-title'] || FORM_TITLE || 'form'} submission ${data['config.subject-part']} `;
     await sendMail({
       TO: DELIVERY_EMAILS.split(',').map(v => v.trim()),
@@ -99,6 +96,9 @@ export const handler = async (
   
   return {
     statusCode: 200,
+    headers: {
+      "Content-Type": "text/html; charset=utf-8"
+    },
     body: template({
       brandName: data['config.brand-name'] || BRAND_NAME || '--Your brand Name--',
       logoURL: data['config.logo-url'] || LOGO_URL,
