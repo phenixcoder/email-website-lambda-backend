@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/phenixcoder/email-website-lambda-backend/compare/v1.0.0...v1.0.1) (2023-06-17)
+
+
+### Bug Fixes
+
+* Set content-type header tro render html ([3bed33e](https://github.com/phenixcoder/email-website-lambda-backend/commit/3bed33e1759bf78f7888fb1ad9e985aa366f4405))
+
 # 1.0.0 (2023-06-17)
 
 
